@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    <title>
+      Avoiding sneaky operator overloads &bull; Lounge&lt;C++&gt;
+    </title>
+    <link href="../../assets/css/all-e506c42a.css" rel="stylesheet" type="text/css" />
+    <script src="../../assets/js/all-da39a3ee.js" type="text/javascript"></script>
+    <link href="//assets.loungecpp.net/img/favicon.png" rel="icon" type="image/png" />
+  </head>
+  <body class='cpp cpp_avoiding-sneaky-overloads cpp_avoiding-sneaky-overloads_index'>
+    <div class='page-container'>
+      <header class='page-header'>
+        <img alt='Lounge&lt;C++&gt;' class='page-header-logo' src='//assets.loungecpp.net/img/logo.png'>
+        <h1 class='page-header-title'>
+          <a href='/'>Lounge&lt;C++&gt;</a>
+        </h1>
+        <p>
+          Less temporary, but somehow still temporary <img alt=":iiam:" src="//assets.loungecpp.net/img/emote/emot-iiam.gif" />
+        </p>
+      </header>
+      
+      
+      <h2><span class="editsection">&#91;<a href="?section=Comma" title="Edit section: Comma">edit</a>&#93;</span> <a name="Comma"></a><span class="mw-headline" id="Comma">Comma</span></h2>
+      
+      
+      
+      <p>When you write <code>x, y</code> in generic code, most of the time you intend that to mean "evaluate <code>x</code>, then evaluate <code>y</code> and make that the result". But since <code>operator,</code> can be overloaded, this could end up meaning something else entirely.
+      </p>
+      <p>A simple workaround is to stick a <code>void()</code> in between the two expressions:
+      </p>
+      <p><pre>x, void(), y
+      </pre>
+      </p>
+      <p>Since you can't take a <code>void</code> parameter, there's no way for this to result in a call to an overloaded <code>operator,</code>.
+      </p>
+      <footer class='page-footer'>
+        <p>
+          Content on Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported unless noted otherwise.
+          Uses Google Analytics which sets a tracking cookie for statistical purposes (see <a href="https://www.google.com/analytics/learn/privacy.html">GA privacy policy</a>).
+        </p>
+        <p>
+          Source lives in a <a href="https://github.com/LoungeCPP/loungecpp.net">GitHub repository</a> and is powered
+          by <a href="http://middlemanapp.com/">Middleman</a>. Open a PR if you want to change anything.
+        </p>
+      </footer>
+    </div>
+    <script defer src='//www.google-analytics.com/analytics.js'></script>
+    <script src="../../assets/js/analytics-0a593893.js" type="text/javascript" defer="defer"></script>
+  </body>
+</html>
